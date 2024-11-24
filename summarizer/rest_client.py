@@ -24,14 +24,18 @@ def summarize_content(content: str, service_url: str) -> str:
     # url = "http://localhost:11434/api/generate"
 
     systemPrompt = f"Only use the following information to answer the question. Do not use anything else: {content}"
-    prompt = f"Summary the following content birefly in maximum of 20 words in your response include just the answer no extra explanation"
+    prompt = f"""Summary the following content birefly in maximum of 20 words in your response include just the answer no extra explanation, Respond in JSON with two fields first field : summary
+     second field category describing the category of the content"""
 
     # Define the request payload as a dictionary
     payload = {
         "model": "llama3.2",
         "system": systemPrompt,
         "prompt": prompt,
+        "format": "json",
         "stream": False,
+        # "keep_alive": 1
+        # "context": context,
     }
 
     # Convert the payload to JSON format
