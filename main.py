@@ -1,7 +1,7 @@
 import re
 from bookmarks_parser.parser import parse_bookmarks
 from content_extractor.extractor import extract_content
-from summarizer.rest_client import summarize_content
+from summarizer.content_summarizer import summarize_content
 from utils.logging_config import setup_logging
 
 
@@ -46,7 +46,9 @@ def process_bookmark(bookmark: dict) -> str:
         return f"Error: Could not extract content from {url}"
 
     # Step 2: Summarize content
-    summary = summarize_content(content, LLM_SERVICE_URL)
+    summary = summarize_content(
+        content=content, client_type="ollama", service_url=LLM_SERVICE_URL
+    )
     return summary
 
 

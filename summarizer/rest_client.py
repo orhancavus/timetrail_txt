@@ -1,17 +1,7 @@
 import requests
 import json
-from utils.timing import timing_decorator
-
-"""
-def summarize_content_langchaing(content: str, service_url: str) -> str:
-
-    ollama = Ollama(base_url="http://localhost:11434", model="llama3.2")
-
-    return ollama("# A simple python function to remove whitespace from a string:")
-"""
 
 
-# @timing_decorator
 def summarize_content(content: str, service_url: str) -> str:
     """
     Sends the content to the LLM REST service for summarization.
